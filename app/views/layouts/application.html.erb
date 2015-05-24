@@ -3,6 +3,8 @@
 <head>
   <title>App1</title>
   <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
+  <link href='http://fonts.googleapis.com/css?family=Sigmar+One' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>  
   <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
@@ -10,9 +12,28 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<h1>Welcome to Bike Berlin</h1>
-<h2>Your source for used bikes in Berlin</h2>
+<nav class="navbar  navbar-fixed-top navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button id="toggle" type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <div class="navbar-collapse collapse">
+      <a class="navbar-brand" href="/"><span class="fa fa-bicycle"></span></a>
+      <ul class="nav navbar-nav pull-right">
+        <li><a href="/static_pages/about">About</a></li>
+        <li><a href="/static_pages/contact">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
 <%= yield %>
-
+<footer>
+  <p>Welcome! The date and time is <%= Time.now %></p>
+</footer>
 </body>
 </html>
