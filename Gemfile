@@ -7,6 +7,8 @@ gem 'rails', '4.2.1'
 gem 'puma'
 # makes Jquery works with turbolinks
 gem 'jquery-turbolinks'
+# makes a dupm of the db
+gem 'seed_dump'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
