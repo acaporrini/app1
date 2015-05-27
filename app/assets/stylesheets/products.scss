@@ -4,6 +4,7 @@
 .product{
   margin-top:50px;
   border-bottom: 5px solid black;
+
 }
 .product img {
   margin:20px;
@@ -11,4 +12,19 @@
 .description{
   display: none;
 
+}
+h1{
+  margin:30px;
+  text-align: center;
+  font-family: 'Sigmar One', cursive;
+}
+.img-product{
+  width: 200px;
+  height: auto;
+}
+.btn-group{
+  margin-left: 30px;
+}
+.new-product{
+  margin: 10px auto;
 }

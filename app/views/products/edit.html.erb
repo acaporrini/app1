@@ -1,8 +1,13 @@
 <div class="container">
   <h1>Editing Product</h1>
+  <div class="row">
+    <div class="col-xs-12 col-md-8 col-md-offset-2">
+      <%= render 'form' %>
+    </div>
+  </div>
+  <ul class="nav nav-pills">
+    <li role="presentation"><%= link_to 'Show', @product %></li>
+    <li role="presentation"><%= link_to 'Back', products_path %></li>
+  </ul>
 
-  <%= render 'form' %>
-
-  <%= link_to 'Show', @product %> |
-  <%= link_to 'Back', products_path %>
 </div>

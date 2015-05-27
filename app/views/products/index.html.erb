@@ -2,13 +2,15 @@
   <p id="notice"><%= notice %></p>
 
   <h1>Products</h1>
-  <%= link_to 'New Product', new_product_path, class: "btn btn-default" %>
+  
   <% @products.each do |product| %>
     <section class="product">
       <div class="row">
         <div class="col-xs-12 col-md-5 col-md-offset-1">
           <h2><%= product.name %></h2>
-          <div class="btn-group btn-group-sm" role="group" aria-label="...">
+          <p>Color: <%= product.colour %></p>
+          <p> Price: <%= product.price %> &euro;</p>
+          <div class="btn-group btn-group-xs" role="group" aria-label="...">
             <%= link_to 'Show', product, class: "btn btn-default" %>
             <%= link_to 'Edit', edit_product_path(product),class: "btn btn-default" %>
             <a href="#" id="description" class="btn btn-default toggleDesc">Description</a>
@@ -16,7 +18,7 @@
           </div>
         </div>
         <div class="col-xs-12 col-md-5">
-          <img src='<%= product.image_url %>' class="img-responsive">
+          <img src='<%= product.image_url %>' class="img-responsive img-product">
         </div>
 
       </div>
@@ -27,6 +29,7 @@
       </div>
     </section>
   <% end %>
+  <%= link_to 'New Product', new_product_path, class: "btn btn-default new-product" %>
   <!--<table>
     <thead>
       <tr>
