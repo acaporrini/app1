@@ -13,7 +13,7 @@
   display: none;
 
 }
-h1{
+.fancy{
   margin:30px;
   text-align: center;
   font-family: 'Sigmar One', cursive;
@@ -27,4 +27,7 @@ h1{
 }
 .new-product{
   margin: 10px auto;
+}
+.nav.nav-pills{
+  margin:10px 50px;
 }
