@@ -19,6 +19,18 @@ body{
   padding-bottom: 50px;
   background-color: white;
 }
+.container-fluid.landing{
+  background-color: white;
+  margin-top:0px;
+  padding:30px;
+}
+.carousel-control.left,.carousel-control.right,.carousel-control.left:hover,.carousel-control.right:hover{
+
+  background: none;
+}
+.glyphicon-chevron-left, .glyphicon-chevron-right{
+  color:red;
+}
 .container-fluid{
   padding:0px;
 }
@@ -33,6 +45,9 @@ body{
 .jumbotron h2{
   font-family: "verdana";
   margin-left: 30px;
+}
+.carousel-inner > .item > img {
+    margin: 0 auto;
 }
 header{
   text-align: center;
