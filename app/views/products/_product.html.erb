@@ -5,7 +5,7 @@
       <p>Color: <%= product.colour %></p>
       <p> Price: <%= number_to_currency(product.price, precision: 2, locale: :de) %></p>
       <p>
-        <%= truncate(product.description, length: 200, omission: " ", separator: " ") { link_to "more...", product } %>
+        <%=h truncate(product.description, length: 200, omission: " ", separator: " ") { link_to "more...", product } %>
       </p>
       <div class="btn-group btn-group-xs" role="group" aria-label="...">
         <%= link_to 'Show', product, class: "btn btn-default" %>
