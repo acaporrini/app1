@@ -9,11 +9,11 @@
     <p>Color: <%= @product.colour %></p>
     <p> <%= number_to_currency(@product.price, precision: 2, locale: :de) %></p>
     <strong>Description:</strong>
-    <%=raw @product.description %>
+    <%= @product.description %>
   </div>
 
   <div class="col-xs12 col-md-6">
-    <img src="<%= @product.image_url %>" alt="No image available" >
+    <%= image_tag(@product.image_url, alt: "Image not found" ) %>
   </div>
   <div class="row">
     <ul class="nav nav-pills">

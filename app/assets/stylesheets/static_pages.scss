@@ -40,7 +40,8 @@ body{
   height: 1080px;
   margin-bottom: 0px;
   padding-top: 500px;
-  background-image: url("/images/jumbo.jpg")
+  background-image: url("/images/jumbo.jpg");
+  text-align:center;
 }
 .jumbotron h2{
   font-family: "verdana";
@@ -53,6 +54,14 @@ header{
   text-align: center;
   font-family: 'Sigmar One', cursive;
   margin:20px;
+}
+#enter{
+  background: none;
+  color: white;
+  margin-left: 50px;
+}
+#enter:hover{
+  color: black;
 }
 footer{
   color: white;
