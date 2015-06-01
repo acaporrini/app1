@@ -24,7 +24,14 @@
     </div>
     <div class="navbar-collapse collapse">
       <a class="navbar-brand" href="/">Bike <span class="fa fa-bicycle"></span>  Berlin</a>
-      <ul class="nav navbar-nav pull-right">
+      <%= form_tag("/products", method: "get",class: "navbar-form navbar-right") do %>
+        <div class="form-group">
+          <%= label_tag(:q, "Search for:",class: "control-label") %>
+          <%= text_field_tag(:q,nil, class: "form-control") %>
+        </div>
+        <%= submit_tag("Search",class: "btn btn-default btn-xs") %>
+      <% end %>
+      <ul class="nav navbar-nav">
         <li><a href="/static_pages/about">About</a></li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Products <span class="caret"></span></a>
