@@ -19,6 +19,8 @@ gem 'coffee-rails', '~> 4.1.0'
 # gem 'therubyracer', platforms: :ruby
 # Use devise for uset authentication
 gem 'devise'
+# cancancan for authorization
+gem 'cancancan', '~> 1.10'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
