@@ -3,7 +3,9 @@ class OrdersController < ApplicationController
     @orders=Order.all
   end
   def show
+    @order = Order.find(params[:id])
     @user = User.find(@order.user_id)
+    @product = Product.find(@order.product_id)
   end
   def new
     @order=Order.new
@@ -20,6 +22,9 @@ class OrdersController < ApplicationController
         format.json { render json: @order.errors, status: :unprocessable_entity }
       end
     end
+  end
+  def edit
+    @order = Order.find(params[:id])
   end
   def update
     respond_to do |format|

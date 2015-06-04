@@ -1,1 +1,10 @@
-  <%= order.user_id %>
+<div id="row">
+   User: <%= User.find(order.user_id).first_name %> 
+   Product: <%= Product.find(order.product_id).name %>
+   <div class="btn-group btn-group-xs" role="group" aria-label="...">
+    ciao
+    <%= link_to 'Show', order, class: "btn btn-default" %>
+    <%= link_to 'Edit', edit_order_path(order),class: "btn btn-default" %>
+    <%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default" %>
+  </div>
+</div>
