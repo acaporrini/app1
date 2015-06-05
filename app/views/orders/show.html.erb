@@ -1,4 +1,14 @@
 <div class="container">
-  User: <%= @user.first_name + @user.last_name %> <br/>
-  Product: <%= @product.name %>
+  <table class="table">
+    <tr>
+      <th>User</th>
+      <th>Product</th>
+      <th>Price</th>
+    </tr>
+    <tr>
+      <td> <%= @order.user.first_name + @order.user.last_name %></td>
+      <td> <%= @order.product.name %></td>
+      <td> <%= @order.product.price %></td>
+    </tr>
+  </table>
 </div>

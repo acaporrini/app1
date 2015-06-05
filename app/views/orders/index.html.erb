@@ -1,3 +1,11 @@
 <div class="container">
-  <%= render partial: "order", collection: @orders %>
+  <h1 class="fancy">Orders</h1>
+  <table class="table table-striped">
+    <tr>
+      <th>Name</th>
+      <th>Product</th>
+      <th>Edit</th>
+    </tr>
+    <%= render partial: "order", collection: @orders %>
+  </table>
 </div>

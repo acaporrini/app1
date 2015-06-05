@@ -1,11 +1,12 @@
 class OrdersController < ApplicationController
+  before_action :set_order, only: [:show, :edit, :update, :destroy]
   def index
-    @orders=Order.all
+    @orders=Order.includes(:product , :user ).all
   end
   def show
-    @order = Order.find(params[:id])
-    @user = User.find(@order.user_id)
-    @product = Product.find(@order.product_id)
+
+    # @user = User.find(@order.user_id)
+    # @product = Product.find(@order.product_id)
   end
   def new
     @order=Order.new
@@ -24,7 +25,7 @@ class OrdersController < ApplicationController
     end
   end
   def edit
-    @order = Order.find(params[:id])
+
   end
   def update
     respond_to do |format|
@@ -47,7 +48,7 @@ class OrdersController < ApplicationController
   private
   # Use callbacks to share common setup or constraints between actions.
   def set_order
-    @order = Order.find(params[:id])
+    @order = Order.includes(:product , :user ).find(params[:id])
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.
