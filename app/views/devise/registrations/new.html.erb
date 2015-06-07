@@ -14,12 +14,12 @@
       <% if @minimum_password_length %>
       <em>(<%= @minimum_password_length %> characters minimum)</em>
       <% end %><br />
-      <%= f.password_field :password, autocomplete: "off" %>
+      <%= f.password_field :password, autocomplete: "off", pattern: "(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}", "data-toggle" => "tooltip" , title: "must contain 8 or more characters that are of at least one number, and one uppercase and lowercase letter!",id: "tooltip" %>
     </div>
 
     <div class="field">
       <%= f.label :password_confirmation %><br />
-      <%= f.password_field :password_confirmation, autocomplete: "off" %>
+      <%= f.password_field :password_confirmation, autocomplete: "off" , pattern: "(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}", "data-toggle" => "tooltip" , title:"must contain 8 or more characters that are of at least one number, and one uppercase and lowercase letter!"%>
     </div>
 
     <div class="actions">
@@ -29,3 +29,9 @@
 
   <%= render "devise/shared/links" %>
 </div>
+<script>
+
+ $(function () {
+  $('#tooltip').tooltip();
+   });
+</script>
