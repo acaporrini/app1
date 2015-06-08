@@ -1,6 +1,11 @@
 
 <!-- <div class="container landing"> -->
   <div class="container">
+    <% if alert %> 
+    <p id="alert" class="alert alert-danger" role="alert"><%= alert %></p>
+    <% elsif notice %>
+    <p id="notice" class="alert alert-info" role="alert"><%= notice %></p>
+    <% end %>
     <h1 class="fancy">Featured Products</h1>
     <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
       <!-- Indicators -->

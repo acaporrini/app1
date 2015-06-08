@@ -5,6 +5,7 @@ $(document).ready(function(){
   //   $(this).closest("section").find(".description").slideToggle();
   // })
 
+  $("[data-toggle=tooltip]").tooltip();
    
   image();
   $("#image_url").on("change",function(){
