@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   devise_for :users, :path => '', :path_names => {:sign_in => 'login', :sign_out => 'logout', :sign_up => 'signup'}, :controllers => { registrations: 'registrations' }
   resources :users
-  resources :products
+  resources :products do
+    resources :comments
+  end
   resources :orders
   #resources :orders, only: [:index, :show, :new, :create, :edit, :delete]
   get 'static_pages/about'

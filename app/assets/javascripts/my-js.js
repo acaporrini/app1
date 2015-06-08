@@ -4,9 +4,14 @@ $(document).ready(function(){
   //   event.preventDefault();
   //   $(this).closest("section").find(".description").slideToggle();
   // })
-
+  $('.rated').raty({ path: '/assets', 
+  readOnly: true,
+  score: function() {
+    return $(this).attr('data-score');
+  }
+  });
   $("[data-toggle=tooltip]").tooltip();
-   
+  $(".rating").raty({ path: '/assets',scoreName: 'comment[rating]'}); 
   image();
   $("#image_url").on("change",function(){
     image();
