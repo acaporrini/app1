@@ -42,6 +42,10 @@ gem 'pry-rails'
 gem 'will_paginate', '~> 3.0.6'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  %w[rspec-core rspec-expectations rspec-mocks rspec-rails rspec-support].each do |lib|
+    gem lib, :git => "git://github.com/rspec/#{lib}.git", :branch => 'master'
+  end
+  
   gem 'byebug'
   gem 'sqlite3'
   # Access an IRB console on exception pages or by using <%= console %> in views
