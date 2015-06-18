@@ -17,10 +17,11 @@ class CommentsController < ApplicationController
 
   def destroy
     
-    Comment.find(params[:id]).destroy
-    flash[:notice] = "Thank you comment dead"
-    redirect_to product_url(id: params[:product_id]) 
-
+    @comment = Comment.find(params[:id])
+    product = @comment.product
+    @comment.destroy
+    flash[:notice] = "Comment deleted"
+    redirect_to product
   end
 
   private
