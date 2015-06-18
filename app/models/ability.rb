@@ -6,5 +6,7 @@ class Ability
     can :manage,User,id: user.id
     can :manage,Order, user_id: user.id
     can :destroy, Comment
+
+
   end
 end
