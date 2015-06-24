@@ -7,6 +7,8 @@ describe Comment do
       expect(subject.errors[:body].size).to eq(1)
     end
 
+
+
     it "must have a rating" do
       subject.valid?
       expect(subject.errors[:rating].size).to eq(2)
