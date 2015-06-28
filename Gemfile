@@ -47,6 +47,8 @@ group :development, :test do
     gem lib, :git => "git://github.com/rspec/#{lib}.git", :branch => 'master'
   end
   gem "factory_girl_rails", "~> 4.0"
+  gem 'guard'
+  gem 'guard-rspec', require: false
   gem 'byebug'
   gem 'sqlite3'
   # Access an IRB console on exception pages or by using <%= console %> in views
