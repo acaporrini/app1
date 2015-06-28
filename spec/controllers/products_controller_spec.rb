@@ -3,8 +3,7 @@ require 'rails_helper'
 describe ProductsController, type: :controller do 
   describe "POST # products" do
     before do
-      @user = User.create(email: "demo@demo.com", password: "12345678")
-      @user.confirm
+      @user = create(:user)
       sign_in @user
     end
     it "create a new product" do 
@@ -14,10 +13,9 @@ describe ProductsController, type: :controller do
 
   describe "DELETE # products" do
     before do
-      @user = User.create(email: "demo@demo.com", password: "12345678")
-      @user.confirm
+      @user = create(:user)
       sign_in @user
-      @product = Product.create(name: "bike",description: "cool bycicle",image_url: "bike.jpg",colour: "red",price: "2,99") 
+      @product = create(:product) 
     end
     it "delete an existing product" do    
       expect{ delete :destroy, id: @product.id }.to change{Product.count}.by(-1)      
@@ -25,10 +23,9 @@ describe ProductsController, type: :controller do
   end
   describe "UPDATE # products" do
     before do
-      @user = User.create(email: "demo@demo.com", password: "12345678")
-      @user.confirm
+      @user = create(:user)
       sign_in @user
-      @product = Product.create(name: "bike",description: "cool bycicle",image_url: "bike.jpg",colour: "red",price: "2,99") 
+      @product = create(:product) 
       put :update, id: @product.id, product: { name: "bycicle" }
       @product.reload
     end
@@ -38,8 +35,7 @@ describe ProductsController, type: :controller do
   end
   describe "GET #index" do
     before do
-      @user = User.create(email: "demo@demo.com", password: "12345678")
-      @user.confirm
+      @user = create(:user)
       sign_in @user
     end
     it "responds successfully with an HTTP 200 status code" do
@@ -55,10 +51,9 @@ describe ProductsController, type: :controller do
   end
   describe "GET #show" do
     before do
-      @user = User.create(email: "demo@demo.com", password: "12345678")
-      @user.confirm
+      @user = create(:user)
       sign_in @user
-      @product = Product.create(name: "bike",description: "cool bycicle",image_url: "bike.jpg",colour: "red",price: "2,99") 
+      @product = create(:product) 
     end
     it "responds successfully with an HTTP 200 status code" do
       get :show, id: @product.id
@@ -73,10 +68,9 @@ describe ProductsController, type: :controller do
   end
   # describe "UPDATE # products" do
   #   before do
-  #     @user = User.create(email: "demo@demo.com", password: "12345678")
-  #     @user.confirm
-  #     sign_in @user
-  #     @product = Product.create(name: "bike",description: "cool bycicle",image_url: "bike.jpg",colour: "red",price: "2,99") 
+  #     @user = create(:user)
+  #       sign_in @user
+  #     @product = create(:product) 
   #   end
   #   it "update an existing product" do    
   #     expect{ put :update, id: @product.id, product: { name: "bycicle" }  }.to change{@product.name}     

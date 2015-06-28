@@ -4,8 +4,7 @@ describe UsersController, type: :controller do
 
   describe "GET #index" do
     before do
-      @user = User.create(email: "demo@demo.com", password: "12345678")
-      @user.confirm
+      @user = build(:user)
       sign_in @user
     end
     it "responds successfully with an HTTP 200 status code" do
@@ -20,8 +19,7 @@ describe UsersController, type: :controller do
   end
   describe "GET #show" do
     before do
-      @user = User.create(email: "demo@demo.com", password: "12345678")
-      @user.confirm
+      @user = create(:user)
       sign_in @user 
     end
     it "responds successfully with an HTTP 200 status code" do

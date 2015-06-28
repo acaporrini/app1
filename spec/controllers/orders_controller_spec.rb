@@ -3,34 +3,31 @@ require 'rails_helper'
 describe OrdersController, type: :controller do 
   describe "POST # orders" do
     before do
-      @user = User.create(email: "demo@demo.com", password: "12345678")
-      @user.confirm
+      @user = build(:user)
       sign_in @user
-      @product = Product.create(name: "bike",description: "cool bycicle",image_url: "bike.jpg",colour: "red",price: "2,99") 
-
     end
     it "create a new order" do 
-      expect{ post :create, { order: { product_id: @product.id, user_id: @user.id } } }.to change{Order.count}.by(1)      
+      expect{ post :create, { order: attributes_for(:order, user_id:@user.id) } }.to change{Order.count}.by(1)      
     end
   end
 
   describe "DELETE # orders" do
     before do
-      @user = User.create(email: "demo@demo.com", password: "12345678")
-      @user.confirm
+      @order = create(:order)
+      @user = @order.user
       sign_in @user
-      @order = Order.create(product_id: 1, user_id: 1 ) 
     end
-    it "delete an existing product" do    
+    it "delete an existing order" do    
       expect{ delete :destroy, id: @order.id }.to change{Order.count}.by(-1)      
     end
   end
   describe "UPDATE # orders" do
     before do
-      @user = User.create(email: "demo@demo.com", password: "12345678")
-      @user.confirm
+      
+      
+      @order = create(:order)
+      @user = @order.user
       sign_in @user
-      @order = Order.create(product_id: 1, user_id: 1 )
       put :update, id: @order.id, order: { product_id: 2 }
       @order.reload
     end
@@ -40,8 +37,7 @@ describe OrdersController, type: :controller do
   end
   describe "GET #index" do
     before do
-      @user = User.create(email: "demo@demo.com", password: "12345678")
-      @user.confirm
+      @user = build(:user)
       sign_in @user
     end
     it "responds successfully with an HTTP 200 status code" do
@@ -57,10 +53,10 @@ describe OrdersController, type: :controller do
   end
   describe "GET #show" do
     before do
-      @user = User.create(email: "demo@demo.com", password: "12345678")
-      @user.confirm
+      @order = create(:order) 
+      @user = @order.user
       sign_in @user
-      @order = Order.create(product_id: 1, user_id: 1 ) 
+      
     end
     it "responds successfully with an HTTP 200 status code" do
       get :show, id: @order.id
