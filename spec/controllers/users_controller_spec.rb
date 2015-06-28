@@ -29,7 +29,6 @@ describe UsersController, type: :controller do
       expect(response).to be_success
       expect(response).to have_http_status(200)
     end
-
     it "renders the index template" do
       get :show, id: @user.id
       expect(response).to render_template("show")

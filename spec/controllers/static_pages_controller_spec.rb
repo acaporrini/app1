@@ -20,7 +20,7 @@ describe StaticPagesController, :type => :controller do
       expect(response).to have_http_status(200)
     end
 
-    it "renders the index template" do
+    it "renders the about template" do
       get :about
       expect(response).to render_template("about")
     end
@@ -32,7 +32,7 @@ describe StaticPagesController, :type => :controller do
       expect(response).to have_http_status(200)
     end
 
-    it "renders the index template" do
+    it "renders the contact template" do
       get :contact
       expect(response).to render_template("contact")
     end
