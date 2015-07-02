@@ -2,7 +2,7 @@ require 'rails_helper'
 
   describe Product do
     context "Should return his attributes" do
-      before { @product = Product.new(name: "bike",description: "cool bike",image_url: "bike.jpg",colour: "red",price: "2,99") }
+      before { @product = build(:product,name: "bike",description: "cool bike",image_url: "bike.jpg",colour: "red",price: "2,99") }
       it "Should return the name" do
         expect(@product.name).to eq "bike"
       end
@@ -18,8 +18,8 @@ require 'rails_helper'
     end
     context "search scope return the correct result" do
       before do 
-        @product1 = Product.create(name: "bike",description: "cool bycicle",image_url: "bike.jpg",colour: "red",price: "2,99") 
-        @product2 = Product.create(name: "City bike",description: "awesome bycicle",image_url: "bike.jpg",colour: "red",price: "2,99") 
+        @product1 = create(:product,name: "bike",description: "cool bycicle",image_url: "bike.jpg",colour: "red",price: "2,99") 
+        @product2 = create(:product,name: "City bike",description: "awesome bycicle",image_url: "bike.jpg",colour: "red",price: "2,99") 
       end
       it "should return the product searched by description" do
         expect(Product.search("cool").to_a[0]).to eq @product1

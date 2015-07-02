@@ -42,13 +42,14 @@ gem 'pry-rails'
 # gem 'capistrano-rails', group: :development
 gem 'will_paginate', '~> 3.0.6'
 group :development, :test do
+  gem 'rspec-rails', '~> 3.0'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  %w[rspec-core rspec-expectations rspec-mocks rspec-rails rspec-support].each do |lib|
-    gem lib, :git => "git://github.com/rspec/#{lib}.git", :branch => 'master'
-  end
+  gem 'spork',  github: 'sporkrb/spork'
+  gem "spork-rails"
+  gem 'guard-spork'
   gem "factory_girl_rails", "~> 4.0"
   gem 'guard'
-  gem 'guard-rspec', require: false
+  gem 'guard-rspec', github: 'guard/guard-rspec', branch: 'debug_logging_for_formatter'
   gem 'byebug'
   gem 'sqlite3'
   # Access an IRB console on exception pages or by using <%= console %> in views

@@ -13,7 +13,7 @@ describe Comment do
     end
   end
   context "commend doesn't have a valid rating" do
-    subject { Comment.new(body:"comment's body", rating: "good" )}
+    subject { build(:comment, rating: "good")}
     it "should throw an error when rating is not an integer" do
       subject.valid?
       expect(subject.errors[:rating].size).to eq(1)
