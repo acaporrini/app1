@@ -96,3 +96,5 @@ D, [2015-07-02T17:19:55.125755 #9709] DEBUG -- : dump_summary writing summary
 D, [2015-07-02T17:19:55.125854 #9709] DEBUG -- : write_summary: 9 examples 
 D, [2015-07-02T17:20:41.264245 #9737] DEBUG -- : dump_summary writing summary
 D, [2015-07-02T17:20:41.264349 #9737] DEBUG -- : write_summary: 9 examples 
+D, [2015-07-02T17:28:04.016439 #9883] DEBUG -- : dump_summary writing summary
+D, [2015-07-02T17:28:04.016525 #9883] DEBUG -- : write_summary: 7 examples 
