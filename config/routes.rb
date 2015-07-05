@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     resources :comments
   end
   resources :orders
+  resources :payments
   #resources :orders, only: [:index, :show, :new, :create, :edit, :delete]
   get 'static_pages/about'
 
