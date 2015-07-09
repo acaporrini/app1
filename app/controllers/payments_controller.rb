@@ -7,7 +7,7 @@ class PaymentsController < ApplicationController
     @email = params[:stripeEmail]
     @product = Product.find(params[:product_id])
     @message = "Congratulations! You have just bought a #{@product.name} for #{ sprintf('%.2f', @amount / 100) } €"
-    # Create the charge on Stripe's servers - this will charge the user's card
+
     #byebug
     begin
       charge = Stripe::Charge.create(
