@@ -52,6 +52,7 @@ group :development, :test do
   gem 'guard'
   gem 'guard-rspec', github: 'guard/guard-rspec', branch: 'debug_logging_for_formatter'
   gem 'byebug'
+  
   gem 'sqlite3'
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
