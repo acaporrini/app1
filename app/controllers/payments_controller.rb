@@ -4,6 +4,9 @@ class PaymentsController < ApplicationController
   def create
     token = params[:stripeToken]
     @amount = params[:price].to_f * 100
+    @email = params[:stripeEmail]
+    @product = Product.find(params[:product_id])
+    @message = "Congratulations! You have just bought a #{@product.name} for #{ sprintf('%.2f', @amount / 100) } €"
     # Create the charge on Stripe's servers - this will charge the user's card
     #byebug
     begin
@@ -13,7 +16,8 @@ class PaymentsController < ApplicationController
         :source => token,
         :description => params[:stripeEmail]
       )
-      flash[:notice] = "Thanks for your purchase, you paid #{ sprintf('%.2f', @amount.to_f / 100) } €"
+      flash[:notice] = "Thanks for your purchase, you paid #{ sprintf('%.2f', @amount / 100) } €"
+      UserMailer.payment_notification(@email, @message).deliver
     rescue Stripe::CardError => e
       # The card has been declined
       body = e.json_body
