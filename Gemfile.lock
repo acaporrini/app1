@@ -1,4 +1,14 @@
 GIT
+  remote: git://github.com/Compass/compass-rails.git
+  revision: 3e88f991150ffa39b0a539dffb3326248d18e6ad
+  branch: master
+  specs:
+    compass-rails (2.0.4)
+      compass (~> 1.0.0)
+      sass-rails (< 5.1)
+      sprockets (< 2.13)
+
+GIT
   remote: git://github.com/guard/guard-rspec.git
   revision: d9b8e3e3178956a1c2a0b0a2ffe987bfa83136c6
   branch: debug_logging_for_formatter
@@ -73,6 +83,12 @@ GEM
     cancancan (1.12.0)
     childprocess (0.5.6)
       ffi (~> 1.0, >= 1.0.11)
+    chosen-rails (1.4.2)
+      coffee-rails (>= 3.2)
+      compass-rails (>= 2.0.4)
+      railties (>= 3.0)
+      sass-rails (>= 3.2)
+    chunky_png (1.3.4)
     coderay (1.1.0)
     coffee-rails (4.1.0)
       coffee-script (>= 2.2.0)
@@ -82,6 +98,18 @@ GEM
       execjs
     coffee-script-source (1.9.1.1)
     columnize (0.9.0)
+    compass (1.0.3)
+      chunky_png (~> 1.2)
+      compass-core (~> 1.0.2)
+      compass-import-once (~> 1.0.5)
+      rb-fsevent (>= 0.9.3)
+      rb-inotify (>= 0.9)
+      sass (>= 3.3.13, < 3.5)
+    compass-core (1.0.3)
+      multi_json (~> 1.0)
+      sass (>= 3.3.0, < 3.5)
+    compass-import-once (1.0.5)
+      sass (>= 3.2, < 3.5)
     debug_inspector (0.0.2)
     devise (3.5.1)
       bcrypt (~> 3.0)
@@ -123,6 +151,7 @@ GEM
     haml (4.0.6)
       tilt
     highline (1.6.21)
+    hike (1.2.3)
     http-cookie (1.0.2)
       domain_name (~> 0.5)
     i18n (0.7.0)
@@ -262,8 +291,11 @@ GEM
       rails (>= 3.0.0, < 5)
       spork (>= 1.0rc0)
     spring (1.3.6)
-    sprockets (3.2.0)
+    sprockets (2.12.4)
+      hike (~> 1.2)
+      multi_json (~> 1.0)
       rack (~> 1.0)
+      tilt (~> 1.1, != 1.3.0)
     sprockets-rails (2.3.2)
       actionpack (>= 3.0)
       activesupport (>= 3.0)
@@ -288,7 +320,7 @@ GEM
     unf_ext (0.0.7.1)
     warden (1.2.3)
       rack (>= 1.0)
-    web-console (2.1.3)
+    web-console (2.2.0)
       activemodel (>= 4.0)
       binding_of_caller (>= 0.7.2)
       railties (>= 4.0)
@@ -302,7 +334,9 @@ DEPENDENCIES
   brakeman
   byebug
   cancancan (~> 1.10)
+  chosen-rails
   coffee-rails (~> 4.1.0)
+  compass-rails!
   devise
   factory_girl_rails (~> 4.0)
   guard

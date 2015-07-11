@@ -21,7 +21,13 @@
   </div>
   <div class="form-group">
     <%= f.label :colour %><br>
-    <%= f.text_field :colour %>
+    <%= f.select(
+      :colour,
+      [['White', 'white'], ['Red', 'red'], ['Black','black'],['Yellow','yellow'],['Orange','orange'],['Pink','pink']],
+      {},
+      class: 'chosen-select'
+    ) %>
+
   </div>
   <div class="form-group">
     <%= f.label :price %><br>

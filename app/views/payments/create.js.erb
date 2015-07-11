@@ -1,0 +1,8 @@
+$(document).ready(function(){
+    $("#new_payment").on("ajax:success", function(e, data, status, xhr){
+    $("#new_payment").append(xhr.responseText);
+  }
+  ).on("ajax:error", function(e, xhr, status, error){
+    $("#new_payment").append("<p>ERROR</p>");
+  });
+});
