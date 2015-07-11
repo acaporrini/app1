@@ -34,6 +34,7 @@ gem 'stripe'
 gem 'chosen-rails'
 gem "compass-rails", github: "Compass/compass-rails", branch: "master"
 gem 'pry-rails'
+gem 'multi_json', '1.7.8' 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
