@@ -16,14 +16,14 @@ class PaymentsController < ApplicationController
         source: token,
         description:  params[:stripeEmail]
       )
-      flash[:notice] = "Thanks for your purchase, you paid #{ sprintf('%.2f', @amount / 100) } €"
+
       UserMailer.payment_notification(@email, @message).deliver
 
     rescue Stripe::CardError => e
      
       body = e.json_body
       err  = body[:error]
-      flash[:error] = "Unfortunately, there was an error processing your payment: #{err[:message]}"
+
     end
       respond_to do |format|
         format.js

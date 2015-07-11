@@ -1,10 +1,37 @@
-<script
-  src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-  data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-  data-image="<%= @product.image_url %>"
-  data-name="<%= @product.name %>"
-  data-description="<%= @product.description %>"
-  data-amount="<%= @product.price * 100 %>"
-  data-currency="EUR"
->
+
+<script src="//checkout.stripe.com/checkout.js"></script>
+
+<button id="customButton" class="btn btn-default">
+  <i class="fa fa-shopping-cart"></i> 
+  <%= number_to_currency(@product.price, precision: 2, locale: :de) %>
+</button>
+
+<script>
+  var handler = StripeCheckout.configure({
+    key: '<%= Rails.configuration.stripe[:publishable_key] %>',
+    image: '<%= @product.image_url %>',
+    token: function(token) {
+      // Use the token to create the charge with a server-side script.
+      // You can access the token ID with `token.id`
+      var $stripeToken = $('<input type=hidden name=stripeToken />').val(token.id);
+      var $stripeEmail = $('<input type=hidden name=stripeEmail />').val(token.email);
+      $('.new_payment').append($stripeToken).append($stripeEmail).submit();
+    }
+  });
+
+  $('#customButton').on('click', function(e) {
+    // Open Checkout with further options
+    handler.open({
+      name: '<%= @product.name %>',
+      description: '<%= @product.description %>',
+      currency: "eur",
+      amount: <%= @product.price * 100 %>
+    });
+    e.preventDefault();
+  });
+
+  // Close Checkout on page navigation
+  $(window).on('popstate', function() {
+    handler.close();
+  });
 </script>

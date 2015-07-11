@@ -15,5 +15,6 @@ class UserMailer < ApplicationMailer
     mail( from: 'admin@bikebln.com',
           to: email,
           subject: "Your order on BikeBln")
+    
   end
 end

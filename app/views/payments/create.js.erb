@@ -1,8 +1,8 @@
-$(document).ready(function(){
-    $("#new_payment").on("ajax:success", function(e, data, status, xhr){
-    $("#new_payment").append(xhr.responseText);
-  }
-  ).on("ajax:error", function(e, xhr, status, error){
-    $("#new_payment").append("<p>ERROR</p>");
-  });
+$(".new_payment").on("ajax:success", function(e, data, status, xhr){
+  $("#ajax-response").removeClass("alert alert-danger")
+  $("#ajax-response").addClass("alert alert-success").text("Thanks for your purchase");
+}
+).on("ajax:error", function(e, xhr, status, error){
+  $("#ajax-response").removeClass("alert alert-success")
+  $("#ajax-response").addClass("alert alert-danger").text("There was an error with your purchase");
 });
