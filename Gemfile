@@ -43,8 +43,9 @@ gem 'pry-rails'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 gem 'will_paginate', '~> 3.0.6'
-gem "brakeman", :require => false
+
 group :development, :test do
+  gem "brakeman", :require => false
   gem 'rspec-rails', '~> 3.0'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'spork',  github: 'sporkrb/spork'
@@ -57,15 +58,14 @@ group :development, :test do
   
   gem 'sqlite3'
   # Access an IRB console on exception pages or by using <%= console %> in views
-  gem 'web-console', '~> 2.0' , group: :development
-
+  gem 'web-console', '~> 2.0' 
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   #open mail preview in browser
   gem "letter_opener"
   # turns off the Rails asset pipeline log
-  gem 'quiet_assets', group: :development
+  gem 'quiet_assets'
 end
 
 group :production do
