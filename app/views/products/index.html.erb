@@ -8,7 +8,9 @@
   </div>
   <div class="row">
     <h1 class="fancy">Products</h1>
+    <% cache_unless(params[:q],cache_key_for_products) do %>
       <%= render partial: "product", collection: @products %>
+    <% end %>
   </div>
   <%= link_to 'New Product', new_product_path, class: "btn btn-default new-product" %>
 

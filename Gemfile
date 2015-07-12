@@ -44,7 +44,7 @@ gem 'multi_json', '1.7.8'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 gem 'will_paginate', '~> 3.0.6'
-
+gem 'dalli'
 group :development, :test do
   gem "brakeman", :require => false
   gem 'rspec-rails', '~> 3.0'
@@ -67,6 +67,7 @@ group :development, :test do
   gem "letter_opener"
   # turns off the Rails asset pipeline log
   gem 'quiet_assets'
+
 end
 
 group :production do
