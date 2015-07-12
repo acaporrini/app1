@@ -7,7 +7,7 @@
 </button>
 
 <script>
-  $.getScript( "http://checkout.stripe.com/checkout.js", function( data, textStatus, jqxhr ) {
+  $.getScript( "//checkout.stripe.com/checkout.js", function( data, textStatus, jqxhr ) {
     var handler = StripeCheckout.configure({
       key: '<%= Rails.configuration.stripe[:publishable_key] %>',
       image: '',
