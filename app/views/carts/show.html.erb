@@ -1,0 +1,42 @@
+<div class="container">
+<h1 class="fancy">Cart</h1>
+<table class="table table-stripped">
+<tr>
+  <th>
+    Product
+  </th>
+  <th>
+    Quantity
+  </th>
+  <th>
+    Action
+  </th>
+</tr>
+<% @items.keys.each do |key| %>
+<tr>
+  <td>
+    <%= key %>
+  </td>
+  <td>
+    <%= @items[key] %>
+  </td>
+  <td>
+    <%= form_tag(remove_from_cart_path(key), {remote: true , method: :delete, id: "removeFromCart", data: {row: key} } ) do %>
+      <%= submit_tag "Remove", class: "btn btn-default btn-sm" %>
+    <% end %>  
+  </td>
+</tr>
+<% end %>
+<tr>
+  <td>
+    Total: <%= @total %>
+  </td>
+  <td>
+    <%= link_to 'Save' ,  save_cart_path, method: :post, class: "btn btn-default" %>
+  </td>
+  <td>
+  </td>
+</tr>
+</table>
+<%= link_to 'Empty Cart' ,  empty_cart_path, method: :delete, class: "btn btn-danger" %>
+</div>

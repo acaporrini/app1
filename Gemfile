@@ -40,7 +40,7 @@ gem 'multi_json', '1.7.8'
 
 # Use Unicorn as the app server
 # gem 'unicorn'
-
+gem 'redis-rails'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 gem 'will_paginate', '~> 3.0.6'

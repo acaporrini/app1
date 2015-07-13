@@ -6,7 +6,7 @@
   <link href='http://fonts.googleapis.com/css?family=Sigmar+One' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <script src="//code.jquery.com/jquery-1.11.2.min.js"></script> 
+
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 
@@ -47,6 +47,12 @@
         <li><a href="/static_pages/contact">Contact</a></li>
         <% if user_signed_in? %>
         <li><%= link_to "Orders", orders_path %></li>
+        <li>
+          <%= link_to cart_path do%>
+            <span id="cart-count"></span>
+            <i class="fa fa-shopping-cart"></i>
+          <% end %>
+        </li>
         <li>
           <%= link_to("Profile",current_user) %>
         <li>

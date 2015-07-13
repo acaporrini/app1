@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'carts/show'
+
   devise_for :users, :path => '', :path_names => {:sign_in => 'login', :sign_out => 'logout', :sign_up => 'signup'}, :controllers => { registrations: 'registrations' }
   resources :users
   resources :products do
@@ -6,7 +8,16 @@ Rails.application.routes.draw do
   end
   resources :orders
   resources :payments
+  resource :cart, only: [:show] do
+    put 'add/:product_id', to: 'carts#add', as: :add_to
+    delete 'remove/:product_id', to: 'carts#remove', as: :remove_from
+    post 'save', to: 'carts#save', as: :save
+    get 'count', to: 'carts#count'
+    delete 'empty', to: 'carts#empty'
+  end
   #resources :orders, only: [:index, :show, :new, :create, :edit, :delete]
+
+
   get 'static_pages/about'
 
   get 'static_pages/contact'

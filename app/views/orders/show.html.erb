@@ -1,25 +1,29 @@
 <div class="container">
-  <table class="table">
+
+  <h1 class="fancy"> Order N°  <%= @order.id %> </h1>
+  <table class="table table-striped">
     <tr>
-      <th>User</th>
-    </tr>
-    <tr>
-      <td> <%= @order.user.first_name + @order.user.last_name %></td>
-    </tr>
-    <tr>
-      <th>Products</th>
+      <th>Product</th>
+      <th>Price</th>
+      <th>Quantity</th>
     </tr>
     <% @products.each do |product, quantity| %>
     <tr>
       <td>
-        <%= product.name %> <%= product.price %> <%= quantity %>
+        <%= product.name %>  
+      </td>
+      <td>
+        <%= number_to_currency(product.price, precision: 2, locale: :de) %>
+      </td>
+      <td>
+        <%= quantity %>
       </td>
     </tr>
     <% end %>
     <tr>
-    <td>
-      <%= form_tag("/payments",remote: true, class: 'new_payment') do %>
-        Total: <%= @order.total %>
+    <td colspan="3">
+    Total: <%= number_to_currency(@order.total, precision: 2, locale: :de) %>
+      <%= form_tag("/payments",remote: true, class: 'new_payment') do %>        
         <%= render partial: "shared/stripe_checkout_button" %>
         <%= hidden_field_tag(:order_id, @order.id) %>
         <%= hidden_field_tag(:price, @order.total) %>
@@ -27,10 +31,6 @@
       <% end %>  
     <td>
     </tr>
-    <tr>
-      <td>
-        <%= link_to 'Destroy', @order, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default" %>
-      </td>
-    </tr>
   </table>
+  <%= link_to 'Destroy', @order, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default" %>
 </div>

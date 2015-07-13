@@ -1,6 +1,6 @@
 class StaticPagesController < ApplicationController
   def landing_page
-
+    redirect_to :static_pages_index if user_signed_in?
   end
   def index
     @products = Product.limit(3)
