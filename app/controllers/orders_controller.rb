@@ -1,13 +1,20 @@
 class OrdersController < ApplicationController
-  before_action :set_order, only: [:show, :edit, :update, :destroy]
+  before_action :set_order, only: [:show, :destroy]
   load_and_authorize_resource
   def index
-    @orders=Order.includes(:product , :user ).all
+    #must be added to a scope
+    @orders=Order.includes(:user, :products).where(user_id: current_user.id)
   end
   def show
+    @products = {}
+    @order.products.each do |product|
+      if @products[product]
+        @products[product] = @products[product] + 1
+      else
+        @products[product] = 1
+      end  
+    end
 
-    # @user = User.find(@order.user_id)
-    # @product = Product.find(@order.product_id)
   end
   def new
     @order=Order.new
@@ -25,20 +32,7 @@ class OrdersController < ApplicationController
       end
     end
   end
-  def edit
 
-  end
-  def update
-    respond_to do |format|
-      if @order.update(order_params)
-        format.html { redirect_to @order, notice: 'Order was successfully updated.' }
-        format.json { render :show, status: :ok, location: @order }
-      else
-        format.html { render :edit }
-        format.json { render json: @order.errors, status: :unprocessable_entity }
-      end
-    end
-  end
   def destroy
     @order.destroy
     respond_to do |format|
@@ -49,7 +43,7 @@ class OrdersController < ApplicationController
   private
   # Use callbacks to share common setup or constraints between actions.
   def set_order
-    @order = Order.includes(:product , :user ).find(params[:id])
+    @order = Order.includes(:products , :user ).find(params[:id])
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.

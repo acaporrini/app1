@@ -1,9 +1,9 @@
 
 
 
-<button id="customButton" class="btn btn-default">
+<button id="customButton" class="btn btn-default btn-xs">
   <i class="fa fa-shopping-cart"></i> 
-  <%= number_to_currency(@product.price, precision: 2, locale: :de) %>
+   Pay Now
 </button>
 
 <script>
@@ -23,10 +23,10 @@
     $('#customButton').on('click', function(e) {
       // Open Checkout with further options
       handler.open({
-        name: '<%= @product.name %>',
-        description: '<%= @product.description %>',
+        name: 'BikeBln',
+        description: 'Order N° <%= @order.id %>',
         currency: "eur",
-        amount: <%= @product.price * 100 %>
+        amount: <%= @order.total * 100 %>
       });
       e.preventDefault();
     });

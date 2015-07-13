@@ -45,6 +45,8 @@ gem 'multi_json', '1.7.8'
 # gem 'capistrano-rails', group: :development
 gem 'will_paginate', '~> 3.0.6'
 gem 'dalli'
+# Access an IRB console on exception pages or by using <%= console %> in views
+gem 'web-console', '~> 2.0' , group: :development
 group :development, :test do
   gem "brakeman", :require => false
   gem 'rspec-rails', '~> 3.0'
@@ -58,8 +60,7 @@ group :development, :test do
   gem 'byebug'
   
   gem 'sqlite3'
-  # Access an IRB console on exception pages or by using <%= console %> in views
-  gem 'web-console', '~> 2.0' 
+
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'

@@ -5,8 +5,9 @@ class PaymentsController < ApplicationController
     token = params[:stripeToken]
     @amount = params[:price].to_f * 100
     @email = params[:stripeEmail]
-    @product = Product.find(params[:product_id])
-    @message = "Congratulations! You have just bought a #{@product.name} for #{ sprintf('%.2f', @amount / 100) } €"
+    #@product = Product.find(params[:product_id])
+    #a better email template must be set
+    @message = "Congratulations! You have completed your order at BikeBln for #{ sprintf('%.2f', @amount / 100) } €"
 
     
     begin
