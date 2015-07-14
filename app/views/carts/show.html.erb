@@ -1,9 +1,12 @@
 <div class="container">
 <h1 class="fancy">Cart</h1>
-<table class="table table-stripped">
+<table class="table table-striped">
 <tr>
   <th>
     Product
+  </th>
+  <th>
+    Price
   </th>
   <th>
     Quantity
@@ -12,30 +15,31 @@
     Action
   </th>
 </tr>
-<% @items.keys.each do |key| %>
-<tr>
+<% @products.each do |product| %>
+<tr id="removeFromCart_<%= product.id %>">
   <td>
-    <%= key %>
+    <%= product.name %>
   </td>
   <td>
-    <%= @items[key] %>
+    <%= number_to_currency(product.price, precision: 2, locale: :de) %>
   </td>
   <td>
-    <%= form_tag(remove_from_cart_path(key), {remote: true , method: :delete, id: "removeFromCart", data: {row: key} } ) do %>
-      <%= submit_tag "Remove", class: "btn btn-default btn-sm" %>
-    <% end %>  
+    <%= @items[product.id.to_s] %>
+  </td>
+  <td>
+    <button  class="btn btn-default removeFromCart" data-product="<%= product.id %>">Remove</button>
+
   </td>
 </tr>
 <% end %>
 <tr>
-  <td>
-    Total: <%= @total %>
+  <td colspan="3">
+    Total: <span id="cartTotal"><%= number_to_currency(@total, precision: 2, locale: :de) %></span>
   </td>
   <td>
-    <%= link_to 'Save' ,  save_cart_path, method: :post, class: "btn btn-default" %>
+    <%= link_to 'Place Order' ,  save_cart_path, method: :post, class: "btn btn-default" %>
   </td>
-  <td>
-  </td>
+
 </tr>
 </table>
 <%= link_to 'Empty Cart' ,  empty_cart_path, method: :delete, class: "btn btn-danger" %>

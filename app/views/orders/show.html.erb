@@ -1,5 +1,5 @@
 <div class="container">
-
+  <div id="ajax-response"></div>
   <h1 class="fancy"> Order N°  <%= @order.id %> </h1>
   <table class="table table-striped">
     <tr>
@@ -22,8 +22,9 @@
     <% end %>
     <tr>
     <td colspan="3">
-    Total: <%= number_to_currency(@order.total, precision: 2, locale: :de) %>
-      <%= form_tag("/payments",remote: true, class: 'new_payment') do %>        
+    
+      <%= form_tag("/payments",remote: true, class: 'new_payment') do %>   
+        Total: <%= number_to_currency(@order.total, precision: 2, locale: :de) %>     
         <%= render partial: "shared/stripe_checkout_button" %>
         <%= hidden_field_tag(:order_id, @order.id) %>
         <%= hidden_field_tag(:price, @order.total) %>

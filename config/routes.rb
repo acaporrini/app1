@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     delete 'remove/:product_id', to: 'carts#remove', as: :remove_from
     post 'save', to: 'carts#save', as: :save
     get 'count', to: 'carts#count'
+    get 'total', to: 'carts#total'
     delete 'empty', to: 'carts#empty'
   end
   #resources :orders, only: [:index, :show, :new, :create, :edit, :delete]
