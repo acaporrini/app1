@@ -34,12 +34,12 @@ ActiveRecord::Schema.define(version: 20150714170656) do
   add_index "orders", ["user_id"], name: "index_orders_on_user_id"
 
   create_table "orders_products", id: false, force: :cascade do |t|
-    t.integer "order_id",   null: false
-    t.integer "product_id", null: false
+    t.integer "product_id"
+    t.integer "order_id"
   end
 
-  add_index "orders_products", ["order_id", "product_id"], name: "index_orders_products_on_order_id_and_product_id"
-  add_index "orders_products", ["product_id", "order_id"], name: "index_orders_products_on_product_id_and_order_id"
+  add_index "orders_products", ["order_id"], name: "index_orders_products_on_order_id"
+  add_index "orders_products", ["product_id"], name: "index_orders_products_on_product_id"
 
   create_table "products", force: :cascade do |t|
     t.string   "name"
@@ -50,14 +50,6 @@ ActiveRecord::Schema.define(version: 20150714170656) do
     t.string   "colour"
     t.decimal  "price"
   end
-
-  create_table "products_orders", id: false, force: :cascade do |t|
-    t.integer "product_id"
-    t.integer "order_id"
-  end
-
-  add_index "products_orders", ["order_id"], name: "index_products_orders_on_order_id"
-  add_index "products_orders", ["product_id"], name: "index_products_orders_on_product_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "first_name"

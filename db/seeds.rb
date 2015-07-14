@@ -1,3 +1,6 @@
+User.create!([
+  {first_name: "Alessandro", last_name: "Caporrini", email: "a.caporrini@gmail.com", password:"Jud4sl0v3", encrypted_password: "$2a$10$tm3hgUr3jbkHl/h0WUZW.ur8/rovFl6x7LQwHk./gSutynS.8dmCS", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 29, current_sign_in_at: "2015-07-14 18:42:25", last_sign_in_at: "2015-07-13 17:09:39", current_sign_in_ip: "127.0.0.1", last_sign_in_ip: "127.0.0.1", admin: true, confirmation_token: nil, confirmed_at: "2015-06-19 00:00:00", confirmation_sent_at: nil},
+])
 Comment.create!([
   {user_id: 2, body: "ert", rating: 5, product_id: 1},
   {user_id: 2, body: "good", rating: 5, product_id: 1},
