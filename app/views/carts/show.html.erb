@@ -24,7 +24,7 @@
     <%= number_to_currency(product.price, precision: 2, locale: :de) %>
   </td>
   <td>
-    <%= @items[product.id.to_s] %>
+    <%= @items[product.id.to_s] %> 
   </td>
   <td>
     <button  class="btn btn-default removeFromCart" data-product="<%= product.id %>">Remove</button>
@@ -34,7 +34,7 @@
 <% end %>
 <tr>
   <td colspan="3">
-    Total: <span id="cartTotal"><%= number_to_currency(@total, precision: 2, locale: :de) %></span>
+    Total: <span id="cartTotal"><%= number_to_currency($redis.get("total_cart_#{current_user.id}"), precision: 2, locale: :de) %></span>
   </td>
   <td>
     <%= link_to 'Place Order' ,  save_cart_path, method: :post, class: "btn btn-default" %>

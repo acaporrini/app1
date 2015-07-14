@@ -1,17 +1,23 @@
 <tr>
 
   <td>
-    <%= order.user.first_name %> <%= order.user.last_name %>
+    <%= order.id %>
   </td>
 
   <td>
     <%= number_to_currency(order.total, precision: 2, locale: :de) %>
   </td>
   <td>
+    <% if order.paid? %>
+      <span class="label label-success">Paid </span>
+    <% else %>
+      <span class="label label-danger">Not Paid </span>
+    <% end %>
+  </td>
+  <td>
     <div class="btn-group btn-group-xs" role="group" aria-label="...">
-    <%= link_to 'Show', order, class: "btn btn-default" %>
-    <%= link_to 'Pay', order, class: "btn btn-default" %>
-    <%= link_to 'Cancel', order, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default" %>
+      <%= link_to 'Show', order, class: "btn btn-default" %>
+      <%= link_to 'Cancel', order, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default" %>
     </div>
   </td>
 </tr>

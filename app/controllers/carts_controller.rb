@@ -39,7 +39,7 @@ class CartsController < ApplicationController
       value.to_i.times {@order.products << @product}
       
     end
-    flush #gestione errori
+    flush 
     @order.save
     respond_to do |format|
       format.html { redirect_to @order, notice: 'Order was successfully created.' }
@@ -68,7 +68,6 @@ class CartsController < ApplicationController
     "cart_#{current_user.id}"
   end 
   def increase_total(amount)
-    
     $redis.incrbyfloat("total_#{cart_name}", amount.to_f)
   end
   def increase_count(quantity)

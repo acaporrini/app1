@@ -21,20 +21,6 @@ describe OrdersController, type: :controller do
       expect{ delete :destroy, id: @order.id }.to change{Order.count}.by(-1)      
     end
   end
-  describe "UPDATE # orders" do
-    before do
-      
-      
-      @order = create(:order)
-      @user = @order.user
-      sign_in @user
-      put :update, id: @order.id, order: { product_id: 2 }
-      @order.reload
-    end
-    it "update an existing product" do    
-      expect( @order.product_id ).to eq(2)    
-    end
-  end
   describe "GET #index" do
     before do
       @user = build(:user)
