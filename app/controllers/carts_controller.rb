@@ -10,7 +10,7 @@ class CartsController < ApplicationController
   def add
     
     $redis.hincrby(cart_name,params[:product_id],1)
-    $redis.expire(cart_name,10000)
+    $redis.expire(cart_name,172800)
     increase_count(1)
     increase_total(params[:product_price])
     respond_to do |format|
@@ -68,8 +68,10 @@ class CartsController < ApplicationController
   end 
   def increase_total(amount)
     $redis.incrbyfloat("total_#{cart_name}", amount.to_f)
+    $redis.expire("total_#{cart_name}",172800)
   end
   def increase_count(quantity)
-    $redis.incrby("count_#{cart_name}", quantity)    
+    $redis.incrby("count_#{cart_name}", quantity) 
+    $redis.expire("count_#{cart_name}",172800)   
   end
 end
