@@ -23,8 +23,8 @@ describe OrdersController, type: :controller do
   end
   describe "GET #index" do
     before do
-      @user = build(:user)
-      sign_in @user
+      @user = create(:user)
+      sign_in @user      
     end
     it "responds successfully with an HTTP 200 status code" do
       get :index

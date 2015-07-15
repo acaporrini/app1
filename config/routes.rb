@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     put 'add/:product_id', to: 'carts#add', as: :add_to
     delete 'remove/:product_id', to: 'carts#remove', as: :remove_from
     post 'save', to: 'carts#save', as: :save
-    get 'count', to: 'carts#count'
+    get 'count', to: 'carts#count', as: :count
     get 'total', to: 'carts#total'
     delete 'empty', to: 'carts#empty'
   end

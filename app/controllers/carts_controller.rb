@@ -18,13 +18,13 @@ class CartsController < ApplicationController
     end
   end
   def empty
-    flush
+    empty_cart
     redirect_to :back
   end
 
   def remove
     quantity = $redis.hget(cart_name,params[:product_id])
-    price = Product.find(params[:product_id]).price #scope
+    price = Product.find(params[:product_id]).price
     $redis.hdel(cart_name,params[:product_id])
     increase_total(-(price.to_f * quantity.to_f))
     increase_count(- quantity.to_i)
@@ -36,10 +36,9 @@ class CartsController < ApplicationController
     @order = Order.new(user_id: current_user.id, total: $redis.get("total_#{cart_name}") )
     $redis.hgetall(cart_name).each do |key,value|
       @product = Product.find(key)
-      value.to_i.times {@order.products << @product}
-      
+      value.to_i.times {@order.products << @product}    
     end
-    flush 
+    empty_cart 
     @order.save
     respond_to do |format|
       format.html { redirect_to @order, notice: 'Order was successfully created.' }
@@ -59,7 +58,7 @@ class CartsController < ApplicationController
   end
   private
 
-  def flush
+  def empty_cart
     $redis.del(cart_name)
     $redis.del("total_#{cart_name}")
     $redis.del("count_#{cart_name}")

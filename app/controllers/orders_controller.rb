@@ -2,8 +2,8 @@ class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :destroy]
   load_and_authorize_resource
   def index
-    #must be added to a scope
-    @orders=Order.includes(:user, :products).where(user_id: current_user.id)
+    @orders=Order.includes(:user, :products).by_user(current_user.id)
+    #.where(user_id: current_user.id)
   end
   def show
     @products = {}

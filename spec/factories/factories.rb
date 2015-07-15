@@ -22,6 +22,5 @@ FactoryGirl.define do
   end
   factory :order do
     association :user, factory: :user
-
   end
 end

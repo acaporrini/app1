@@ -66,14 +66,5 @@ describe ProductsController, type: :controller do
       expect(response).to render_template("show")
     end
   end
-  # describe "UPDATE # products" do
-  #   before do
-  #     @user = create(:user)
-  #       sign_in @user
-  #     @product = create(:product) 
-  #   end
-  #   it "update an existing product" do    
-  #     expect{ put :update, id: @product.id, product: { name: "bycicle" }  }.to change{@product.name}     
-  #   end
-  # end
+
 end
