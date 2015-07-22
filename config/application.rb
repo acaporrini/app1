@@ -33,5 +33,6 @@ module Bikebln
     config.active_record.raise_in_transactional_callbacks = true
     config.assets.initialize_on_precompile = false
     config.cache_store = :redis_store, 'redis://localhost:6379/0/cache'
+    config.assets.paths << Rails.root.join('vendor', 'assets', 'components')
   end
 end

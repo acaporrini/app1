@@ -1,9 +1,11 @@
 class StaticPagesController < ApplicationController
   def landing_page
-    redirect_to :static_pages_index if user_signed_in?
+    #render :file => 'public/index.html'
+    # redirect_to :static_pages_index if user_signed_in?
   end
   def index
     @products = Product.limit(3)
+
   end
   def thank_you
     @name = params[:name]
@@ -12,9 +14,9 @@ class StaticPagesController < ApplicationController
     @message = params[:message]
     UserMailer.contact_form(@email, @name, @phone, @message).deliver
 
-    # ActionMailer::Base.mail(:from => @email, 
-    #     :to => 'a.caporrini@gmail.com', 
-    #     :subject => "A new contact form message from #{@name}", 
+    # ActionMailer::Base.mail(:from => @email,
+    #     :to => 'a.caporrini@gmail.com',
+    #     :subject => "A new contact form message from #{@name}",
     #     :body => (@message).deliver
     # end
   end
