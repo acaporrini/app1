@@ -3,15 +3,15 @@ class PaymentsController < ApplicationController
   end
   def create
     token = params[:stripeToken]
-    @amount = params[:price].to_f * 100
     @email = params[:stripeEmail]
     @order = Order.find(params[:order_id])
+    @amount = @order.total.to_f * 100
     @message = "Congratulations! You have completed your order at BikeBln for #{ sprintf('%.2f', @amount / 100) } €"
 
-    
+
     begin
       charge = Stripe::Charge.create(
-        amount: @amount.to_i, 
+        amount: @amount.to_i,
         currency: "eur",
         source: token,
         description:  params[:stripeEmail]
@@ -21,7 +21,7 @@ class PaymentsController < ApplicationController
       UserMailer.payment_notification(@email, @message).deliver
 
     rescue Stripe::CardError => e
-     
+
       body = e.json_body
       err  = body[:error]
 

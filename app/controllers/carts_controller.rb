@@ -1,16 +1,16 @@
 class CartsController < ApplicationController
   before_action :authenticate_user!
- 
+  EXPIRATION_TIME = 48.hours
   def show
     @items = $redis.hgetall(cart_name)
     @products = Product.find(@items.keys)
     @total = $redis.get("total_#{cart_name}")
   end
- 
+
   def add
-    
+
     $redis.hincrby(cart_name,params[:product_id],1)
-    $redis.expire(cart_name,172800)
+    $redis.expire(cart_name,EXPIRATION_TIME)
     increase_count(1)
     increase_total(params[:product_price])
     respond_to do |format|
@@ -36,9 +36,9 @@ class CartsController < ApplicationController
     @order = Order.new(user_id: current_user.id, total: $redis.get("total_#{cart_name}") )
     $redis.hgetall(cart_name).each do |key,value|
       @product = Product.find(key)
-      value.to_i.times {@order.products << @product}    
+      value.to_i.times {@order.products << @product}
     end
-    empty_cart 
+    empty_cart
     @order.save
     respond_to do |format|
       format.html { redirect_to @order, notice: 'Order was successfully created.' }
@@ -65,13 +65,13 @@ class CartsController < ApplicationController
   end
   def cart_name
     "cart_#{current_user.id}"
-  end 
+  end
   def increase_total(amount)
     $redis.incrbyfloat("total_#{cart_name}", amount.to_f)
-    $redis.expire("total_#{cart_name}",172800)
+    $redis.expire("total_#{cart_name}",EXPIRATION_TIME)
   end
   def increase_count(quantity)
-    $redis.incrby("count_#{cart_name}", quantity) 
-    $redis.expire("count_#{cart_name}",172800)   
+    $redis.incrby("count_#{cart_name}", quantity)
+    $redis.expire("count_#{cart_name}",EXPIRATION_TIME)
   end
 end

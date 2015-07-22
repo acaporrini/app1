@@ -10,7 +10,7 @@
     <% @products.each do |product, quantity| %>
     <tr>
       <td>
-        <%= product.name %>  
+        <%= product.name %>
       </td>
       <td>
         <%= number_to_currency(product.price, precision: 2, locale: :de) %>
@@ -23,15 +23,14 @@
     <tr>
       <td colspan="3">
         <% unless @order.paid? %>
-          <%= form_tag("/payments",remote: true, class: 'new_payment') do %>   
-            Total: <%= number_to_currency(@order.total, precision: 2, locale: :de) %>     
+          <%= form_tag("/payments",remote: true, class: 'new_payment') do %>
+            Total: <%= number_to_currency(@order.total, precision: 2, locale: :de) %>
             <%= render partial: "shared/stripe_checkout_button" %>
             <%= hidden_field_tag(:order_id, @order.id) %>
-            <%= hidden_field_tag(:price, @order.total) %>
             <%= hidden_field_tag(:authenticity_token, form_authenticity_token) %>
           <% end %>
         <% else %>
-          Total: <%= number_to_currency(@order.total, precision: 2, locale: :de) %> 
+          Total: <%= number_to_currency(@order.total, precision: 2, locale: :de) %>
         <% end %>
       <td>
     </tr>
